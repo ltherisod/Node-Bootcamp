@@ -1,0 +1,27 @@
+{
+  "name": "nodebootcamp",
+  "version": "0.0.1",
+  "description": "node practice for accenture",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ltherisod/Node-Bootcamp.git"
+  },
+  "author": "Laura Therisod",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ltherisod/Node-Bootcamp/issues"
+  },
+  "homepage": "https://github.com/ltherisod/Node-Bootcamp#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "yargs": "^17.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

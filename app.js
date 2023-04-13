@@ -1,7 +1,12 @@
+const {crearArchivo} = require('./helpers/multiplicar')
+const argv = require('./config/yargs')
+ require('colors')
 //limpiar la consola
 console.clear()
-//ciclo for tabla de 5
-const base = 5;
-for(let i=1; i <=10; i++){
-    console.log(`${base} x ${i} = ${base * i}`)
-}
+//no recomendada, sin validaciones
+// const [ , , arg3='base=7'] = process.argv;
+// const [ , base = 7] = arg3.split('=')
+
+crearArchivo(argv.b, argv.l, argv.h)
+.then(base => console.log(base.rainbow))
+.catch((error)=> console.log(error))
