@@ -1,60 +1,42 @@
-const { guardarDB, leerDB } = require('./helpers/guardarArchivo')
-const {inquirerMenu, pausa, leerInput, listadoTareasBorrar, confirmar, mostrarListadoChecklist} = require('./helpers/inquirer')
+
+const {leerInput, inquirerMenu, pausa} = require('./helpers/inquirer');
+const Busquedas = require('./models/busquedas');
 require('colors')
-const Tareas = require('./models/tareas')
+
 const main = async() =>{
-    let option = ''
-    const tareas = new Tareas();
-    const tareasDB = leerDB();
-    if(tareasDB){
-        //esto es si existen las tareas.
-        tareas.cargarTareasFromArray(tareasDB)
-    }
-   
-    do {
-        //imprimir menu
-        option = await inquirerMenu();
-        switch (option) {
-            case '1':
-                //crear option
-                const desc = await leerInput('Descripcion:');
-                tareas.crearTarea(desc);
-            break;
+    const busquedas = new Busquedas()
+    
+   let opt;
+   do {
+    opt = await inquirerMenu()
+    switch (opt) {
+        case 1:
+            //Mostrar mensaje
+            const lugar = await leerInput('Ciudad:')
+            console.log(lugar)
+            //Buscar los lugares
 
-            case '2':
-                //listado de todas
-               tareas.listadoCompleto()
-            break;
-            case '3'://listar completadas
-               tareas.listadoPendientesCompletadas(true)
-            break;
-            case '4'://listar pendientes
-                tareas.listadoPendientesCompletadas(false)
-             break;
-             case '5'://completo | pendiente
-                const ids = await mostrarListadoChecklist(tareas.listadoArr)
-                tareas.toggleCompletadas(ids)
-             break;
-             case '6'://borrar tareas
-             const id = await listadoTareasBorrar(tareas.listadoArr)
-            if(id !== '0'){
-                const confirm = await confirmar('¿Estas seguro?')
-                if(confirm){
-                   tareas.borrarTarea(id)
-                   console.log('Tarea borrada')
-                }
-            }
+            //seleccionar el lugar
+
+            //Clima
+
+            //Mostrar resultados
+
+            console.log('\nInformacion de la ciudad\n'.red)
+            console.log('Ciudad: ')
+            console.log('Lat: ')
+            console.log('Lng: ')
+            console.log('Temp: ')
+            console.log('Mín: ')
+            console.log('Máx: ')
             
-           
-          break;
-             
-        }
-
-         guardarDB(tareas.listadoArr)
+        break;
+    
         
-         await pausa()
-    } while (option !== '0');
- 
-    // pausa()
+    }
+
+    if(opt !== 0) await pausa()
+    
+   } while (opt !== 0);
 }
 main();
