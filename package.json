@@ -21,7 +21,9 @@
     "colors": "^1.4.0",
     "inquirer":"7.3.3",
     "uuid":"8.3.2",
-    "yargs": "^17.7.1"
+    "yargs": "^17.7.1",
+    "axios":"0.21.1",
+    "dotenv":"8.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
